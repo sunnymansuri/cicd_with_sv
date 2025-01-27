@@ -1,7 +1,7 @@
 # Google reources
 
 resource "google_storage_bucket" "bucket" {
-  project  = "dl-k8s-dev1cade"
-  name     = "daslearning-bucket-23"
+  project  = "daring-keep-446309-u4"
+  name     = "daslearning-bucket-test"
   location = "ASIA-SOUTH1"
 }
