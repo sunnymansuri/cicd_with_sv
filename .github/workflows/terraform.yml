@@ -6,9 +6,9 @@ on:
   push:
     branches:
       - 'main'
-      - 'ep1'
+      - 'sm'
     paths:
-      - 'ep1/**'
+      - 'sm/**'
 
 concurrency: ${{ github.repository }}
 
@@ -28,7 +28,7 @@ jobs:
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.EP_KEY1 }}
         run: |
-          cd ./ep1
+          cd ./sm
           terraform init
           pwd
 
@@ -37,7 +37,7 @@ jobs:
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.EP_KEY1 }}
         run: |
-          cd ./ep1
+          cd ./sm
           terraform plan
 
       - name: Terraform Apply
@@ -47,7 +47,7 @@ jobs:
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.EP_KEY1 }}
         run: |
-          cd ./ep1
+          cd ./sm
           terraform apply --auto-approve
 
       - name: Upload File
@@ -58,7 +58,7 @@ jobs:
           GOOGLE_CREDENTIALS: ${{ secrets.EP_KEY1 }}
           GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/cred.json
         run: |
-          cd ./ep1
+          cd ./sm
           echo -n "$GOOGLE_CREDENTIALS" > $GOOGLE_APPLICATION_CREDENTIALS
           pip install gcloud
           python gcsUpoad.py
